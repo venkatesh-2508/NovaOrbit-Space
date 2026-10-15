@@ -1,0 +1,6 @@
+{
+  "name": "NovaOrbit Space",
+  "description": "AI + Satellite Intelligence for a Safer Earth. Harnessing satellite technology and artificial intelligence for proactive disaster intelligence and emergency preparedness.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
