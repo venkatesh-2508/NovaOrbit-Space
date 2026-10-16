@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Compass, ShieldCheck, Orbit, Globe2 } from 'lucide-react';
+import heroEarthSatelliteImg from '../assets/images/hero_earth_satellite_1792082910763.jpg';
 
 interface HeroSectionProps {
   onExploreTech: () => void;
@@ -98,7 +99,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Main Image Container */}
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] bg-slate-950 overflow-hidden">
                 <img
-                  src="/src/assets/images/hero_earth_satellite_1792082910763.jpg"
+                  src={heroEarthSatelliteImg}
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/images/hero_earth_satellite_1792082910763.jpg';
+                  }}
                   alt="NovaOrbit Space satellite in orbit over Earth capturing multispectral surface data"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -108,8 +112,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {/* Scrim Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-80" />
 
-                {/* Overlaid Satellite Sensor Telemetry Badge */}
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-slate-950/85 border border-slate-800 backdrop-blur-sm text-xs space-y-1">
+                {/* Overlaid Satellite Sensor Telemetry Badge with gentle floating animation */}
+                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-slate-950/85 border border-slate-800 backdrop-blur-sm text-xs space-y-1 animate-float-gentle">
                   <div className="flex items-center justify-between font-mono text-[11px]">
                     <span className="text-slate-400">SENSOR MODALITY:</span>
                     <span className="text-cyan-300">OPTICAL + SAR RADAR</span>

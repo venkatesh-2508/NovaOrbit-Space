@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layers, Cpu, Compass, CheckCircle2 } from 'lucide-react';
 import { SOLUTION_PILLARS } from '../data/content';
+import satelliteSensorImg from '../assets/images/satellite_disaster_sensor_1792082911295.jpg';
 
 export const SolutionSection: React.FC = () => {
   return (
@@ -30,7 +31,10 @@ export const SolutionSection: React.FC = () => {
               </div>
               <div className="relative aspect-[16/10] bg-slate-950 overflow-hidden">
                 <img
-                  src="/src/assets/images/satellite_disaster_sensor_1792082911295.jpg"
+                  src={satelliteSensorImg}
+                  onError={(e) => {
+                    e.currentTarget.src = '/assets/images/satellite_disaster_sensor_1792082911295.jpg';
+                  }}
                   alt="Multispectral satellite scanning Earth for disaster risk intelligence"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"

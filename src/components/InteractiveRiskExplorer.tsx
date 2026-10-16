@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { SAMPLE_DISASTER_SCENARIOS } from '../data/content';
 import { DisasterScenario } from '../types';
+import satelliteTerrainImg from '../assets/images/satellite_disaster_terrain_1792082912010.jpg';
 
 export const InteractiveRiskExplorer: React.FC = () => {
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>('scenario-flood');
@@ -118,11 +119,17 @@ export const InteractiveRiskExplorer: React.FC = () => {
             {/* Simulated Satellite Map Stage */}
             <div className="relative aspect-[16/10] sm:aspect-[16/9] bg-slate-950 overflow-hidden select-none">
               <img
-                src="/src/assets/images/satellite_disaster_terrain_1792082912010.jpg"
+                src={satelliteTerrainImg}
+                onError={(e) => {
+                  e.currentTarget.src = '/assets/images/satellite_disaster_terrain_1792082912010.jpg';
+                }}
                 alt="Satellite remote sensing terrain with multispectral hazard overlay"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
+
+              {/* Dynamic Radar Sweep Scanline Animation */}
+              <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_10px_rgba(6,182,212,0.9)] pointer-events-none animate-radar-sweep" />
 
               {/* Dynamic Layer 1: SAR Radar Grid Overlay */}
               {showSarRadarGrid && (
@@ -166,7 +173,7 @@ export const InteractiveRiskExplorer: React.FC = () => {
                 </div>
               )}
 
-              {/* Clickable Hotspot Pins */}
+              {/* Clickable Hotspot Pins with robust CSS ping animation */}
               {scenario.hotspots.map((hs) => {
                 const isSelected = hs.id === activeHotspotId;
                 return (
@@ -180,7 +187,7 @@ export const InteractiveRiskExplorer: React.FC = () => {
                   >
                     <div className="relative flex items-center justify-center">
                       <span
-                        className={`absolute w-7 h-7 rounded-full opacity-60 animate-ping ${
+                        className={`absolute w-7 h-7 rounded-full opacity-70 animate-beacon-ping ${
                           hs.evacuationPriority === 'Immediate'
                             ? 'bg-rose-500'
                             : hs.evacuationPriority === 'Standby'

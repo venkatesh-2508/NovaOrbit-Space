@@ -8,6 +8,7 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { IMPACT_POINTS } from '../data/content';
+import disasterOpsCenterImg from '../assets/images/disaster_operations_center_1792082912002.jpg';
 
 export const ImpactSection: React.FC = () => {
   const impactIcons = [
@@ -73,7 +74,10 @@ export const ImpactSection: React.FC = () => {
         <div className="rounded-2xl bg-slate-900 border border-slate-800 overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl">
           <div className="lg:col-span-7 aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto bg-slate-950 overflow-hidden relative">
             <img
-              src="/src/assets/images/disaster_operations_center_1792082912002.jpg"
+              src={disasterOpsCenterImg}
+              onError={(e) => {
+                e.currentTarget.src = '/assets/images/disaster_operations_center_1792082912002.jpg';
+              }}
               alt="Disaster operations command center coordinating crisis response with satellite maps"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
